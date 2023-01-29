@@ -1,5 +1,4 @@
-var myApp = new Framework7();
-var $$ = Dom7;
+
 var wsURL = 'ws://ws.idnsportal.com:444/';
 
 
@@ -171,7 +170,7 @@ var rest = new XMLHttpRequest();
 
 function requestUpdates()
 {
-    rest.open("POST", '/updates', true);
+    rest.open("POST", 'http://chat.idnsportal.com/updates', true);
     rest.setRequestHeader("Content-Type", "application/json");
     rest.send(JSON.stringify({
         "name" : document.getElementById("name").value.trim(),
@@ -278,7 +277,7 @@ function sendMessage()
     }
     document.getElementById("message").value = '';
     if (webSocketFailed){
-        rest.open("POST", '/updates', true);
+        rest.open("POST", 'http://chat.idnsportal.com/updates', true);
         rest.setRequestHeader("Content-Type", "application/json");
         rest.send(JSON.stringify({
             "name" : getname(),
