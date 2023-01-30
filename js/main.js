@@ -26,8 +26,41 @@ function addmessage(message){
 }
 function setonline(online){
 }
-function translate(text,langue){
+function truncate(q){
+    var len = q.length;
+    if(len<=20) return q;
+    return q.substring(0, 10) + len + q.substring(len-10, len);
 }
+function translate(text,langue){
+    var appKey = '17a9253b01e11301';
+    var key = 'TzvJo7q5MQ8nGxJFSHNmDLVCyi2yhTgh';
+    var salt = (new Date).getTime();
+    var curtime = Math.round(new Date().getTime()/1000);
+    var query = text;
+    var from = 'auto';
+    var to = langue;
+    var str1 = appKey + truncate(query) + salt + curtime + key;
+    var sign = CryptoJS.SHA256(str1).toString(CryptoJS.enc.Hex);
+    var data={
+        q: query,
+        appKey: appKey,
+        salt: salt,
+        from: from,
+        to: to,
+        sign: sign,
+        signType: "v3",
+        curtime: curtime,
+    };
+    const Http = new XMLHttpRequest();
+    var rsp;
+    Http.open("GET", "https://openapi.youdao.com/api");
+    Http.onload=function(e){
+        var ret=JSON.parse(Http.responseText)['translation'];
+        rsp=ret;
+    }
+    return rsp;
+}
+ 
 function getmymessage(){
 }
 function setmymessage(message){
