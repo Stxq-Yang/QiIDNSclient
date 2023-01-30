@@ -4,7 +4,7 @@ var wsURL = 'ws://ws.idnsportal.com:444/';
 
 var messageLimit = 1000;
 var messageCounter = 0;
-
+			 
 var lastMessageId = "-1";
 var lastRoundTime = 0;
 var webSocket;
@@ -23,10 +23,11 @@ var sendtranslate;
 var sendlangue;
 var rdlangue;
 var chatGroupID;
+var country;
 Http = new XMLHttpRequest();
 Http.open("GET", "http://chat.idnsportal.com/js/country.js");
 Http.onload=function(e){
-    var country=Http.responseText;
+    country=Http.responseText;
 }
 function addmessage(message){
 }
