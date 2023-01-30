@@ -22,6 +22,7 @@ var readtranslate;
 var sendtranslate;
 var sendlangue;
 var rdlangue;
+var chatGroupID;
 Http = new XMLHttpRequest();
 Http.open("GET", "https://openapi.youdao.com/api");
 Http.onload=function(e){
