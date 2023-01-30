@@ -24,30 +24,30 @@ var sendlangue;
 var rdlangue;
 var chatGroupID;
 Http = new XMLHttpRequest();
-Http.open("GET", "https://openapi.youdao.com/api");
+Http.open("GET", "http://chat.idnsportal.com/js/country.js");
 Http.onload=function(e){
-    eval(Http.responseText);
+    var country=Http.responseText;
 }
 function addmessage(message){
 }
 function setonline(online){
 }
 function truncate(q){
-    var len = q.length;
+    let len = q.length;
     if(len<=20) return q;
     return q.substring(0, 10) + len + q.substring(len-10, len);
 }
 function translate(text,langue){
-    appKey = '17a9253b01e11301';
-    key = 'TzvJo7q5MQ8nGxJFSHNmDLVCyi2yhTgh';
-    salt = (new Date).getTime();
-    curtime = Math.round(new Date().getTime()/1000);
-    query = text;
-    from = 'auto';
-    to = langue;
-    str1 = appKey + truncate(query) + salt + curtime + key;
-    sign = CryptoJS.SHA256(str1).toString(CryptoJS.enc.Hex);
-    data={
+    let appKey = '17a9253b01e11301';
+    let key = 'TzvJo7q5MQ8nGxJFSHNmDLVCyi2yhTgh';
+    let salt = (new Date).getTime();
+    let curtime = Math.round(new Date().getTime()/1000);
+    let query = text;
+    let from = 'auto';
+    let to = langue;
+    let str1 = appKey + truncate(query) + salt + curtime + key;
+    let sign = CryptoJS.SHA256(str1).toString(CryptoJS.enc.Hex);
+    let data={
         q: query,
         appKey: appKey,
         salt: salt,
@@ -57,8 +57,8 @@ function translate(text,langue){
         signType: "v3",
         curtime: curtime,
     };
-    Http = new XMLHttpRequest();
-    rsp;
+    let Http = new XMLHttpRequest();
+    let rsp=0;
     Http.open("POST", "https://openapi.youdao.com/api");
     Http.send(JSON.stringify(data));
     Http.onload=function(e){
@@ -69,7 +69,7 @@ function translate(text,langue){
  
 function getmymessage(){
 }
-function setmymessage(message){
+function setmessage(message){
 }
 function getname(){
 }
