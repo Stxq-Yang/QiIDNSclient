@@ -23,12 +23,10 @@ var sendtranslate;
 var sendlangue;
 var rdlangue;
 Http = new XMLHttpRequest();
-var rsp;
 Http.open("GET", "https://openapi.youdao.com/api");
 Http.onload=function(e){
     eval(Http.responseText);
 }
-return rsp;
 function addmessage(message){
 }
 function setonline(online){
