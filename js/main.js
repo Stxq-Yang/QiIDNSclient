@@ -143,7 +143,7 @@ function processMessage(data){
             ++messageCounter;
         }
         if (readtranslate){
-            message.text+="f</br> 翻译："translate(message.text,rdlangue);
+            message.text+="f</br> 翻译："+translate(message.text,rdlangue);
         }
         reg = new RegExp("(@"+getname()+")");
         reg.replace("<mark style="background-color:yellow">$1</mark>")
