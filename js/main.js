@@ -150,7 +150,7 @@ function processMessage(data){
             ++messageCounter;
         }
         if (readtranslate){
-            message.text+="f</br> 翻译："+translate(message.text,rdlangue);
+            message.text+="</br> 翻译："+translate(message.text,rdlangue);
         }
         reg = new RegExp("(@"+getname()+")");
         reg.replace("<mark style=\"background-color:yellow\">$1</mark>");
@@ -213,7 +213,7 @@ function requestUpdates()
     rest.open("POST", 'http://chat.idnsportal.com/updates', true);
     rest.setRequestHeader("Content-Type", "application/json");
     rest.send(JSON.stringify({
-        "name" : document.getElementById("name").value.trim(),
+        "name" : getname(),
         "type" : "init",
         "group" : chatGroupID,
         "country" : country,
