@@ -146,7 +146,7 @@ function processMessage(data){
             message.text+="f</br> 翻译："+translate(message.text,rdlangue);
         }
         reg = new RegExp("(@"+getname()+")");
-        reg.replace("<mark style="background-color:yellow">$1</mark>")
+        reg.replace("<mark style="background-color:yellow">$1</mark>");
         addmessage(data.message)
         lastMessageId = data.message.messageId;
         return;
