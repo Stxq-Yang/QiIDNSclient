@@ -23,12 +23,13 @@ var sendtranslate;
 var sendlangue;
 var rdlangue;
 var chatGroupID;
-var country;
-Http = new XMLHttpRequest();
-Http.open("GET", "http://chat.idnsportal.com/js/country.js");
-Http.onload=function(e){
-    country=Http.responseText;
-}
+$.ajax({type:"GET",
+	url:"http://chat.idnsportal.com/js/country.js",
+	async:false,
+	success:function(result,status,xhr){
+		var country=result;
+	}});
+
 function addmessage(message){
 }
 function setonline(online){
