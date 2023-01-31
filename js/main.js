@@ -49,23 +49,27 @@ function translate(text,langue){
     let to = langue;
     let str1 = appKey + truncate(query) + salt + curtime + key;
     let sign = CryptoJS.SHA256(str1).toString(CryptoJS.enc.Hex);
-    let data={
-        q: query,
-        appKey: appKey,
-        salt: salt,
-        from: from,
-        to: to,
-        sign: sign,
-        signType: "v3",
-        curtime: curtime,
-    };
-    let Http = new XMLHttpRequest();
-    let rsp=0;
-    Http.open("POST", "https://openapi.youdao.com/api");
-    Http.send(JSON.stringify(data));
-    Http.onload=function(e){
-        rsp=JSON.parse(Http.responseText)['translation'];
-    }
+    var rsp;
+    $.ajax({
+	    url: 'https://openapi.youdao.com/api',
+	    type: 'post',
+	    dataType: 'jsonp',
+	    data: {
+		q: query,
+		appKey: appKey,
+		salt: salt,
+		from: from,
+		to: to,
+		sign: sign,
+		signType: "v3",
+		curtime: curtime,
+		vocabId: vocabId,
+	    },
+	    success: function (data) {
+		rsp=JSON.parse('translation'];
+	    },
+	    async:false
+    });
     return rsp;
 }
  
